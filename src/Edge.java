@@ -22,6 +22,7 @@
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
+ *  @author Marcelo Cohen
  */
 public class Edge implements Comparable<Edge> { 
 

@@ -49,6 +49,7 @@ import java.util.Set;
  *
  * @author Robert Sedgewick
  * @author Kevin Wayne
+ * @author Marcelo Cohen
  */
 public class EdgeWeightedGraph {
 	private static final String NEWLINE = System.getProperty("line.separator");
