@@ -240,15 +240,36 @@ public class EdgeWeightedDigraph {
         return s.toString();
     }
 
+	/**
+	 * Returns this graph as an input for GraphViz (dot format).
+	 *
+	 * @return dot graph representation
+	 */
+	public String toDot() {
+		StringBuilder s = new StringBuilder();
+		s.append("digraph {" + NEWLINE);
+		s.append("rankdir = LR;" + NEWLINE);
+		s.append("node [shape = circle];" + NEWLINE);
+		for (DirectedEdge e : edges()) {
+			String attrib = "label=" + e.weight();
+			if (e.getColor() != null)
+				attrib += ", color=" + e.getColor();
+			s.append(e.from() + " -> " + e.to() + " [" + attrib + "]" + NEWLINE);
+		}
+		s.append("}");
+		return s.toString();
+	}
+
     /**
      * Unit tests the {@code EdgeWeightedDigraph} data type.
      *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        In in = new In(args[0]);
+        // In in = new In(args[0]);
+        In in = new In("tinyEWG.txt");
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
-        StdOut.println(G);
+        StdOut.println(G.toDot());
     }
 
 }

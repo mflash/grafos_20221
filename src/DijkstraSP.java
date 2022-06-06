@@ -1,3 +1,5 @@
+import javax.swing.event.SwingPropertyChangeSupport;
+
 /******************************************************************************
  *  Compilation:  javac DijkstraSP.java
  *  Execution:    java DijkstraSP input.txt s
@@ -95,6 +97,14 @@ public class DijkstraSP {
         
         // check optimality conditions
         assert check(G, s);
+
+        for (DirectedEdge e : G.edges())
+            e.setColor("lightgray");
+
+        // color all SPT edges red
+        for(DirectedEdge e: edgeTo)
+            if(e != null)
+                e.setColor("red, penwidth=2.0");
     }
 
     public long elapsedTime() { return endTime - startTime; }
@@ -218,6 +228,7 @@ public class DijkstraSP {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
+        // In in = new In("tinyEWG.txt");
         In in = new In("mediumEWG.txt");
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
         int s = 0;
@@ -238,6 +249,8 @@ public class DijkstraSP {
                 StdOut.printf("%d to %d         no path\n", s, t);
             }
         }
+        System.out.println();
+        System.out.println(G.toDot());
     }
 
 }

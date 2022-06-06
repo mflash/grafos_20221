@@ -24,6 +24,7 @@ public class DirectedEdge {
     private final int v;
     private final int w;
     private final double weight;
+    private String color;
 
     /**
      * Initializes a directed edge from vertex {@code v} to vertex {@code w} with
@@ -42,6 +43,7 @@ public class DirectedEdge {
         this.v = v;
         this.w = w;
         this.weight = weight;
+        this.color = null;
     }
 
     /**
@@ -68,6 +70,24 @@ public class DirectedEdge {
         return weight;
     }
 
+    /**
+     * Changes the color of this edge
+     *
+     * @color the color for this edge (default: null)
+     */
+    public void setColor(String color) {
+    	this.color = color;
+    }
+    
+    /**
+     * Returns the color of this edge.
+     *
+     * @return the color of this edge
+     */
+    public String getColor() {
+		return color;
+	}
+    
     /**
      * Returns a string representation of the directed edge.
      * @return a string representation of the directed edge
